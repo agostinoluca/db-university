@@ -13,3 +13,42 @@
 
 Pensiamo a quali entità (tabelle) creare per il nostro database e cerchiamo poi di stabilirne le relazioni.
 Infine, andiamo a definire le colonne e i tipi di dato di ogni tabella.
+
+### Elenco delle tabelle:
+
+1. Dipartimenti
+
+- id | BIGINT PRIMARY-KEY AUTO-INCREMENT UNIQUE NOTNULL
+- nome | VARCHAR (255) NOTNULL
+
+2. Corsi di Laurea
+
+- id | BIGINT PK AI UNIQUE NOTNULL
+- nome | VARCHAR (255) NOTNULL
+
+3. Corsi selezionati
+
+- id | BIGINT PK AI UNIQUE NOTNULL
+- nome | VARCHAR (255) NOTNULL
+
+4. Insegnanti
+
+- id | BIGINT PK AI UNIQUE NOTNULL
+- nome | VARCHAR (50) NOTNULL
+- cognome | VARCHAR (50) NOTNULL
+
+5. Appelli d'esame
+
+- id | BIGINT PK AI UNIQUE NOTNULL
+- data | DATE NOTNULL
+
+6. Studenti
+
+- id | BIGINT PK AI UNIQUE NOTNULL
+- nome | VARCHAR (50) NOTNULL
+- cognome | VARCHAR (50) NOTNULL
+- anno di nascita | DATE NULL
+
+7. Iscrizioni esami
+
+- id | BIGINT PK AI UNIQUE NOTNULL
