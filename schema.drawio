@@ -483,10 +483,10 @@
                     <mxGeometry x="8" y="552" width="30" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="177" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-                    <mxGeometry x="259" y="767" width="30" height="30" as="geometry"/>
+                    <mxGeometry x="210" y="691" width="30" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="179" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-                    <mxGeometry x="401" y="766" width="30" height="30" as="geometry"/>
+                    <mxGeometry x="370" y="691" width="30" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="180" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
                     <mxGeometry x="578" y="496" width="30" height="30" as="geometry"/>
