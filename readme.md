@@ -32,19 +32,22 @@ Infine, andiamo a definire le colonne e i tipi di dato di ogni tabella.
 - id | BIGINT PK AI UNIQUE NOTNULL
 - nome | VARCHAR (255) NOTNULL
 - corsolaurea_id | FK
+- ? insegnante_id
 
 4. Insegnanti
 
 - id | BIGINT PK AI UNIQUE NOTNULL
 - nome | VARCHAR (50) NOTNULL
 - cognome | VARCHAR (50) NOTNULL
-- corsolaurea_id | FK
+- ? corsoselezionato_id
 
 5. Appelli d'esame
 
 - id | BIGINT PK AI UNIQUE NOTNULL
 - data | DATE NOTNULL
 - corsoselezionato_id | FK
+- voto | FLOAT NOTNULL
+- studente_id | FK
 
 6. Studenti
 
@@ -53,11 +56,3 @@ Infine, andiamo a definire le colonne e i tipi di dato di ogni tabella.
 - cognome | VARCHAR (50) NOTNULL
 - anno di nascita | DATE NULL
 - corsolaurea_id | FK
-
-7. Iscrizioni esami
-
-- id | BIGINT PK AI UNIQUE NOTNULL
-- data | DATETIME NOTNULL
-- voto | FLOAT NOTNULL
-- studente_id | FK
-- appello_id | FK
