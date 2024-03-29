@@ -63,6 +63,7 @@ Infine, andiamo a definire le colonne e i tipi di dato di ogni tabella.
 
 - ```sql
   SELECT * FROM `students` WHERE `date_of_birth` BETWEEN '1990-01-01' AND '1990-12-31';
+  SELECT * FROM `students` WHERE YEAR(`date_of_birth`) = 1990;
   ```
 
 2. Selezionare tutti i corsi che valgono più di 10 crediti (479)
@@ -74,35 +75,69 @@ Infine, andiamo a definire le colonne e i tipi di dato di ogni tabella.
 3. Selezionare tutti gli studenti che hanno più di 30 anni
 
 - ```sql
-  SELECT * FROM `students` WHERE DATEDIFF(NOW(), `date_of_birth`) / 365 > 30
+  SELECT * FROM `students` WHERE DATEDIFF(NOW(), `date_of_birth`) / 365.25 > 30;
+  SELECT * FROM `students` WHERE YEAR(NOW())  - YEAR(`date_of_birth`) > 30; [NON PRECISA]
+  SELECT * FROM `students` WHERE TIMESTAMPDIFF(YEAR, `date_of_birth`, CURDATE()) > 30; [NON PRECISA]
   ```
 
 4. Selezionare tutti i corsi del primo semestre del primo anno di un qualsiasi corso di laurea (286)
 
 - ```sql
   SELECT * FROM `courses` WHERE `period` = 'I semestre' AND `year` = '1';
+
   ```
 
 5. Selezionare tutti gli appelli d'esame che avvengono nel pomeriggio (dopo le 14) del 20/06/2020 (21)
 
 - ```sql
   SELECT * FROM `exams` WHERE `date` = '2020-06-20' AND TIME(`hour`) > '14:00:00';
+  SELECT * FROM `exams` WHERE `date` = '2020-06-20' AND HOUR(`hour`) >= '14';
   ```
 
 6. Selezionare tutti i corsi di laurea magistrale (38)
 
 - ```sql
   SELECT * FROM `degrees` WHERE `name` LIKE '%Laurea Magistrale%';
+  SELECT * FROM `degrees` WHERE `level` = 'magistrale';
   ```
 
 7. Da quanti dipartimenti è composta l'università? (12)
 
 - ```sql
-  SELECT * FROM `departments` COUNT;
+  SELECT * FROM `departments` COUNT; [ERRATA]
+  SELECT COUNT(*) FROM `departments`;
   ```
 
 8. Quanti sono gli insegnanti che non hanno un numero di telefono? (50)
 
 - ```sql
   SELECT * FROM `teachers` WHERE `phone` IS null;
+  ```
+
+9. Contare gli studenti raggruppati per anno di nascita
+
+- ```sql
+  SELECT COUNT(*) AS `Students_number`, YEAR(`date_of_birth`) AS `year_of_birth` FROM `students` GROUP BY `year_of_birth`;
+  ```
+
+10. Selezionare il voto più basso dato ad ogni appello d'esame
+
+- ```sql
+  SELECT MIN(`vote`) AS `lowest_vote`, `exam_id` AS `exam` FROM `exam_student` GROUP BY `exam`;
+  ```
+
+11. Contare gli appelli d'esame del mese di luglio raggruppati per giorno
+
+- ```sql
+  SELECT COUNT(*) AS `total`, DAY(`date`) AS `day_of_exam` FROM `exams` WHERE MONTH(`date`) = 7 GROUP BY `day_of_exam`;
+  ```
+
+12. Selezionare tutti i corsi del Corso di Laurea in Informatica (22)
+
+- ```sql
+  SELECT `courses`.`id`, `courses`.`name` AS `course_name`, `courses`.`description`, `courses`.`period`, `courses`.`year`, `courses`.`cfu`, `courses`.`website`, `degrees`.`name` AS `degree_name`
+  FROM `courses`
+  JOIN `degrees`
+  ON `courses`.`degree_id` = `degrees`.`id`
+  WHERE `degrees`.`name` = 'Corso di Laurea in Informatica';
   ```
